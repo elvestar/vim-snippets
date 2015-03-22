@@ -238,21 +238,18 @@ snippet gpl
 # #define
 snippet df
 	#define 
-# include minos master
-snippet imm
-	#include "minos/master/${1}"
+# Namespace 
+snippet un
+	using namespace ${1};
 	${2}
-# namespace minos master
-snippet nmm
-	namespace baidu {
-	namespace minos {
-	namespace master {
-
-	${1}
-
-	}  // namespace master
-	}  // namespace minos
-	}  // namespace baidu
+snippet nm
+	namespace ${1:} {
+	${2}
+	}  // namespace $1
+	${3}
+snippet prf
+	printf("${1}", "${2}");
+	${3}
 snippet ifd
 	cout << __FILE__ << ":" << __LINE__ << ":" << ${0} << endl;
 snippet ife
@@ -269,6 +266,36 @@ snippet ff
 	${1}
 	
 	#endif  // `GetFullPathForIncludeGuards()`
+snippet ih
+	#include "`GetHeaderFile()`"
+	${1}
+# Namespace of minos master
+snippet nmm
+	namespace baidu {
+	namespace minos {
+	namespace master {
+
+	${1}
+
+	}  // namespace master
+	}  // namespace minos
+	}  // namespace baidu
+# Include of minos master
+snippet imm
+	#include "minos/master/${1}"
+	${2}
+# * Write a class
+# Constructor
+snippet ct
+	`GetLastClassName()`();
+# Destructor
+snippet dt
+	~`GetLastClassName()`();
+snippet ini
+	bool Init();
+snippet mini
+	bool m_is_inited;
+# * Write a function
 # return
 snippet re
 	return ${1};
@@ -284,7 +311,7 @@ snippet ren
 # TODO
 snippet td
 	// TODO(`g:name`): ${1}
-# include <>
+# include <> and its using
 snippet ii
 	#include <${1}>
 	${2}
@@ -311,7 +338,7 @@ snippet usm
 snippet uss
 	using std::string;
 	${1}
-# include ""
+# include "" and its using
 snippet ic
 	#include "${1}"
 	${2}
@@ -351,17 +378,21 @@ snippet utsfs
 snippet utsaj
 	using toft::JoinStrings;
 	${1}
-snippet un
-	using namespace ${1};
-	${2}
-snippet nm
-	namespace ${1:} {
-	${2}
-	}  // namespace $1
-	${3}
-snippet prf
-	printf("${1}", "${2}");
-	${3}
+# *Use stl
+# Define stl container
+snippet dcs
+	const std::string& ${1}
+snippet dcv
+	const std::vector<${1}> ${2}
+snippet dcm
+	const std::map<${1}, ${2}> ${3}
+# Define stl container pointer
+snippet dps
+	const std::string* ${1}
+snippet dpv
+	const std::vector<${1}>* ${2}
+snippet dpm
+	const std::map<${1}, ${2}>* ${3}
 # Logging (using glog)
 snippet inf
 	LOG(INFO) << "${1}"${2};
@@ -400,7 +431,15 @@ snippet ut
 		}
 		virtual void TearDown() {
 		}
+
+		${2}
 	}; 
+snippet tf
+	TEST_F(`GetLastClassName()`, ${1}) {
+		${2}
+	};
+snippet FR
+	FRIEND_TEST(${1}, ${2});
 snippet A
 	ASSERT_${1}(${2});
 	${3}
@@ -464,3 +503,5 @@ snippet DCi3
 	DECLARE_int32(${1});
 snippet DCi6
 	DECLARE_int64(${1});
+# *Build
+# See in blade.snippets

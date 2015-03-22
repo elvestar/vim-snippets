@@ -1,0 +1,29 @@
+snippet bcb
+	cc_binary(
+		name = '${1}',
+		srcs = [
+			'${2}',
+		],
+		deps = [
+			'${3}',
+		],
+	)
+snippet bcl
+	cc_library(
+		name = '${1}',
+		srcs = [
+			'${2}',
+		],
+		deps = [${3}
+		],
+	)
+snippet bct
+	cc_test(
+		name = '${1}',
+		srcs = [
+			'${2}',
+		],
+		deps = [
+			'${3}',
+		],
+	)

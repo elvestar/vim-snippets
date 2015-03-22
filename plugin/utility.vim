@@ -32,12 +32,12 @@ function! GetFullPathForIncludeGuards()
 endfunction
 
 
-" TODO Get unittest class name
-function! GetUnittestClassName()
+" Get last class name in text
+function! GetLastClassName()
     let pattern = 'class \(\w*\) '
     let linenum = search(pattern, 'Wnb')
     if linenum == 0
-        return "".g:rs."...".g:re.""
+        return '${1}'
     else
         return matchlist(getline(linenum), pattern)[1]
     endif
@@ -47,8 +47,8 @@ endfunction
 function! GetHeaderFile()
     let dirname = expand("%:p:h")
     let dirname = TrimProjectPath(dirname)
-    let filename = expand("%:t")
-    let head_file_path = dirname . filename . ".h"
-    return head_file_path
+    let filename = split(expand("%:t"), '\.')[0]
+    let header_file_path = dirname . filename . ".h"
+    return header_file_path
 endfunction
 
