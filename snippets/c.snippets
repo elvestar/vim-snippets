@@ -261,6 +261,14 @@ snippet ife
 	} else {
 	    ${3}
 	}   
+snippet ff
+	#ifndef `GetFullPathForIncludeGuards()`
+	#define `GetFullPathForIncludeGuards()`
+	#pragma once
+	
+	${1}
+	
+	#endif  // `GetFullPathForIncludeGuards()`
 # return
 snippet re
 	return ${1};
