@@ -43,7 +43,6 @@ function! GetLastClassName()
     endif
 endfunction
 
-" TODO Uncompleted!
 function! GetHeaderFile()
     let dirname = expand("%:p:h")
     let dirname = TrimProjectPath(dirname)

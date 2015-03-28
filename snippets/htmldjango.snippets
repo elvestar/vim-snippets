@@ -14,13 +14,14 @@ snippet autoescape
 	{% autoescape ${1:off} %}
 		${0}
 	{% endautoescape %}
-snippet block
+snippet {blo
 	{% block ${1} %}
 		${0}
 	{% endblock %}
-snippet #
+# Comment
+snippet {#
 	{# ${0:comment} #}
-snippet comment
+snippet {com
 	{% comment %}
 		${0}
 	{% endcomment %}
@@ -28,7 +29,8 @@ snippet cycle
 	{% cycle ${1:val1} ${2:val2} ${3:as ${4}} %}
 snippet debug
 	{% debug %}
-snippet extends
+# Extends
+snippet {ext
 	{% extends "${0:base.html}" %}
 snippet filter
 	{% filter ${1} %}
@@ -36,21 +38,22 @@ snippet filter
 	{% endfilter %}
 snippet firstof
 	{% firstof ${1} %}
-snippet for
+snippet {for
 	{% for ${1} in ${2} %}
 		${0}
 	{% endfor %}
 snippet empty
 	{% empty %}
 	${0}
-snippet if
+# If
+snippet {if
 	{% if ${1} %}
 		${0}
 	{% endif %}
-snippet el
+snippet {el
 	{% else %}
 		${1}
-snippet eif
+snippet {elif
 	{% elif ${1} %}
 		${0}
 snippet ifchanged
@@ -63,7 +66,8 @@ snippet ifnotequal
 	{% ifnotequal ${1} ${2} %}
 		${0}
 	{% endifnotequal %}
-snippet include
+# Include
+snippet {in
 	{% include "${0}" %}
 snippet load
 	{% load ${0} %}
@@ -81,7 +85,7 @@ snippet url
 	{% url ${1} as ${0} %}
 snippet widthratio
 	{% widthratio ${1:this_value} ${2:max_value} ${0:100} %}
-snippet with
+snippet {with
 	{% with ${1} as ${2} %}
 		${0}
 	{% endwith %}
