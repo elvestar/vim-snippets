@@ -67,9 +67,9 @@ snippet ifnotequal
 		${0}
 	{% endifnotequal %}
 # Include
-snippet {in
+snippet {inc
 	{% include "${0}" %}
-snippet load
+snippet {load
 	{% load ${0} %}
 snippet now
 	{% now "${0:jS F Y H:i}" %}
@@ -142,4 +142,9 @@ snippet urlizetrunc
 	urlizetrunc:${0}
 snippet wordwrap
 	wordwrap:${0}
-
+snippet {css
+	<link rel="stylesheet" href="{% static "css/${1}.css" %}">
+	${2}
+snippet {js
+	<script src="{% static "js/${1}.js" %}"></script>
+	${2}

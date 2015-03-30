@@ -91,6 +91,10 @@ snippet model
 		def get_absolute_url(self):
 			return ('${7:view_or_url_name}' ${0})
 
+snippet unicode
+	def __unicode__(self):
+		return ${1}
+
 snippet modeladmin
 	class ${1:ModelName}Admin(admin.ModelAdmin):
 		${0}
@@ -110,3 +114,5 @@ snippet r2r
 			${2}
 		}${0:, context_instance=RequestContext(request)}
 	)
+snippet render
+	return render(request, '${1}.html', {${2}})
